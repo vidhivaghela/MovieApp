@@ -1,7 +1,7 @@
 import './App.css'
 import MovieCard from './components/MovieCard'
 import Home from './pages/Home';
-import Favourite from './pages/Favourites';
+import Favourites from './pages/Favourites';
 import {Routes, Route} from "react-router-dom"
 
 function App() {
