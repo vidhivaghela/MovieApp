@@ -13,37 +13,36 @@ function Home() {
   const handleSearch = (e) => {
     e.preventDefault();
     alert(searchQuery);
-    setSearchQuery(" ");
+    setSearchQuery("");
   };
 
   console.log(searchQuery);
 
   return (
-    <div className="home">
-      <form onSubmit={handleSearch} className="search-form">
+    <div className="w-full box-border py-8">
+      <form onSubmit={handleSearch} className="max-w-xl mx-auto mb-8 flex gap-4 px-4">
         <input
           type="text"
           placeholder="Search for movies"
-          className="search-input"
+          className="flex-1 p-3 bg-gray-800 text-white text-lg rounded focus:outline-none focus:ring-2 focus:ring-gray-500"
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)} // onchange = Event , To get the value which we put in the search input we use e.target.value
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <button type="submit" className="search-button">
+        <button
+          type="submit"
+          className="px-6 py-3 bg-red-600 text-white font-medium rounded transition duration-200 hover:bg-red-700 whitespace-nowrap"
+        >
           Search
         </button>
       </form>
-      <div className="movies-grid">
-        {movies.map(
-          (movie) => 
-            (
-              <MovieCard movie={movie} key={movie.id} /> // using this state to conditionally render this movie card only if the begining of the movie title begins with the "searchQuery"
-            )
-        )}
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4 w-full box-border">
+        {movies.map((movie) => (
+          <MovieCard movie={movie} key={movie.id} />
+        ))}
       </div>
     </div>
   );
 }
 
 export default Home;
-
-// (.map) is used to dynamically render typically an array of values
